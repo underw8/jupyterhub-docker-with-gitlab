@@ -1,0 +1,25 @@
+# JupyterHub docker-compose configuration file
+version: "3"
+
+services:
+  hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    image: jupyterhub
+    container_name: jhub
+    environment:
+      GITLAB_URL: ${GITLAB_URL}
+      OAUTH_CALLBACK_URL: ${GITLAB_OAUTH_CALLBACK_URL}
+      GITLAB_CLIENT_ID: ${GITLAB_CLIENT_ID}
+      GITLAB_CLIENT_SECRET: ${GITLAB_CLIENT_SECRET}
+    env_file:
+      - .env
+    volumes:
+      - "${JUPYTERHUB_HOME}/home:/home"
+    ports:
+      - "8888:8888"
+    command: >
+      jupyterhub -f /srv/jupyterhub/jupyterhub_config.py
+    user: root
