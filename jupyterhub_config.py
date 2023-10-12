@@ -40,6 +40,7 @@ c.LocalGitLabOAuthenticator.create_system_users = True
 
 # Whitlelist users and admins
 # c.Authenticator.allowed_users = allowed_users = set()
+c.Authenticator.allow_all = True
 c.Authenticator.admin_users = admin = set()
 c.JupyterHub.admin_access = True
 pwd = os.path.dirname(__file__)
