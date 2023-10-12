@@ -1,6 +1,7 @@
 #!/bin/bash
 
 username=$1
+groupname="jupyterhub"
 
 cp -rn /srv/jupyterhub/notebooks/ /home/$username/
-chown -R $username:$username /home/$username/notebooks/
+chown -R $username:$groupname /home/$username/notebooks/
